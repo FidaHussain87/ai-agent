@@ -5,4 +5,5 @@ REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 
 celery = Celery("ml_worker", broker=REDIS_URL, backend=REDIS_URL)
 
-celery.autodiscover_tasks(['tasks.training', 'tasks.inference'])
+from tasks import training, inference
+#celery.autodiscover_tasks(['tasks.training', 'tasks.inference'])
